@@ -1,0 +1,24 @@
+@* Company details (from Site Settings) next to the project-updates signup. The form is a demo until it is connected (see main.js). *@
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<IPublishedElement>
+@{
+    var settings = Umbraco.Settings();
+    var id = "nl-" + Model.Key.ToString("N")[..8];
+}
+<section class="section section--white" style="padding-top:clamp(48px,6vw,80px);padding-bottom:clamp(48px,6vw,80px)">
+    <div class="container" style="display:flex;flex-wrap:wrap;gap:40px;justify-content:space-between;align-items:center">
+        <div class="company">
+            <span class="label-caps">COMPANY DETAILS</span>
+            <span style="font-weight:600;color:var(--navy)">@(settings?.Value<string>("companyName") ?? "Broudo Holdings")</span>
+            @if (settings?.Value<string>("registeredIn") is { Length: > 0 } state) { <span>Registered in @state, USA</span> }
+            @BlockHelpers.Paragraphs(settings?.Value<string>("mailingAddress"), "company__line")
+        </div>
+        <form class="newsletter" data-demo-form>
+            <label class="label-caps" for="@id">@(Model.Text("heading") ?? "PROJECT UPDATES BY EMAIL")</label>
+            <div class="newsletter__row">
+                <input id="@id" class="input" type="email" name="email" placeholder="@(Model.Text("placeholder") ?? "Your email")" autocomplete="email" required>
+                <button type="submit" class="btn btn--brass" style="padding:15px 26px">@(Model.Text("submitLabel") ?? "Subscribe")</button>
+            </div>
+            <p class="form__success" role="status">@(Model.Text("successMessage") ?? "Thanks — you’re on the list.")</p>
+        </form>
+    </div>
+</section>

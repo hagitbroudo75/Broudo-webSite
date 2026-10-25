@@ -1,0 +1,19 @@
+@model ButtonGroup
+@foreach (var button in Model.Buttons)
+{
+    var link = button.FirstLink("link");
+    var label = button.Text("label") ?? link?.Name;
+    if (link?.Url is null || label is null)
+    {
+        continue;
+    }
+    var css = button.Value<string>("style") switch
+    {
+        "navy" => "btn btn--navy",
+        "outline" => "btn btn--outline",
+        "outlineLight" => "btn btn--outline-light",
+        "textLink" => "text-link",
+        _ => "btn btn--brass",
+    };
+    <a href="@link.Url" class="@css" target="@link.Target">@label</a>
+}

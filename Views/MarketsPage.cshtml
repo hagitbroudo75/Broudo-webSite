@@ -1,0 +1,12 @@
+@* The "Markets" menu item opens the first market (the market pages have tabs to switch between them).
+   Without market pages, the page's own blocks are shown. *@
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<IPublishedContent>
+@{
+    if (Model.Children().FirstOrDefault(page => page.ContentType.Alias == "MarketPage") is { } first)
+    {
+        Context.Response.Redirect(first.Url());
+        return;
+    }
+    Layout = "Shared/_Layout.cshtml";
+}
+@await Html.PartialAsync("Partials/Broudo/Blocks", Model)

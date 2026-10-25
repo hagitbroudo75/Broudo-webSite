@@ -1,0 +1,21 @@
+@* The home page hero: background photo (or the placeholder label), eyebrow, large heading, intro and buttons. *@
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<IPublishedElement>
+@{
+    var image = Model.Media("backgroundImage");
+    var buttons = Model.Items("buttons");
+}
+<section class="hero" aria-label="Introduction" style="@(image is not null ? $"background-image:linear-gradient(rgba(14,27,44,.2),rgba(14,27,44,.75)),url('{image.Url()}')" : null)">
+    @if (image is null && Model.Text("photoLabel") is { } label)
+    {
+        <span class="hero__label">@label</span>
+    }
+    <div class="hero__inner">
+        @if (Model.Text("eyebrow") is { } eyebrow) { <span class="eyebrow">@eyebrow</span> }
+        <h1 class="h1--hero">@Model.Text("heading")</h1>
+        @if (Model.Text("intro") is { } intro) { <p class="hero__intro">@intro</p> }
+        @if (buttons.Count > 0)
+        {
+            <div class="btn-row">@await Html.PartialAsync("Partials/Blocks/_Buttons", new ButtonGroup(buttons))</div>
+        }
+    </div>
+</section>

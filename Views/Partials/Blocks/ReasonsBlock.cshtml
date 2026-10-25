@@ -1,0 +1,18 @@
+@* "Why this market": a figure, title, one line and its source per card. *@
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<IPublishedElement>
+<section class="section">
+    <div class="container stack gap-48">
+        @await Html.PartialAsync("Partials/Blocks/_Head", Model)
+        <div class="reasons">
+            @foreach (var item in Model.Items("items"))
+            {
+                <div class="reason">
+                    <span class="reason__value">@item.Text("value")</span>
+                    <span class="reason__title">@item.Text("title")</span>
+                    @if (item.Text("text") is { } text) { <span class="reason__text">@text</span> }
+                    @if (item.Text("source") is { } source) { <span class="reason__source">Source: @source</span> }
+                </div>
+            }
+        </div>
+    </div>
+</section>

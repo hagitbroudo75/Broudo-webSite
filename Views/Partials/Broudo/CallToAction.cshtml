@@ -1,0 +1,36 @@
+@* The sand-colored band with the founder's photo and two buttons. Without buttons: Schedule a call + Send a message (contact page). *@
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<CallToAction>
+@{
+    var settings = Umbraco.Settings();
+    var portrait = settings?.Value<IPublishedContent>("founderPortrait");
+    var contactUrl = Umbraco.Section("ContactPage")?.Url() ?? "#";
+}
+<section class="cta">
+    <div class="cta__inner">
+        <div class="cta__lead">
+            @if (portrait is not null)
+            {
+                <img class="cta__avatar" src="@portrait.Url()" alt="@settings.FounderName()">
+            }
+            else
+            {
+                <div class="cta__avatar" role="img" aria-label="@settings.FounderName()"></div>
+            }
+            <div class="cta__text">
+                <h2 class="cta__title">@Model.Heading</h2>
+                <p class="cta__sub">@((Model.Subtitle ?? "A 20-minute call with {founder} — no obligation.").WithFounder(settings))</p>
+            </div>
+        </div>
+        <div class="btn-row">
+            @if (Model.Buttons is { Count: > 0 })
+            {
+                @await Html.PartialAsync("Partials/Blocks/_Buttons", new ButtonGroup(Model.Buttons))
+            }
+            else
+            {
+                <a href="@contactUrl" class="btn btn--navy">Schedule a call</a>
+                <a href="@(contactUrl)#message" class="btn btn--outline">Send a message</a>
+            }
+        </div>
+    </div>
+</section>

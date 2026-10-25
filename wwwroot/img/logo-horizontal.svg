@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 120" width="420" height="120">
+  <!-- Broudo Holdings — horizontal logo, for light backgrounds.
+       Note: text uses the Cormorant Garamond and Manrope web fonts; convert text to outlines in a design tool for final print files. -->
+  <path d="M5 38 V5 H38" fill="none" stroke="#B38B4D" stroke-width="2.5"/>
+  <path d="M72 115 H105 V82" fill="none" stroke="#B38B4D" stroke-width="2.5"/>
+  <text x="55" y="88" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-weight="500" font-size="76" fill="#0E1B2C">B</text>
+  <text x="138" y="64" font-family="Cormorant Garamond, Georgia, serif" font-weight="500" font-size="46" letter-spacing="12.9" fill="#0E1B2C">BROUDO</text>
+  <line x1="138" y1="84" x2="190" y2="84" stroke="#B38B4D" stroke-width="1"/>
+  <text x="202" y="88" font-family="Manrope, Arial, sans-serif" font-weight="600" font-size="12" letter-spacing="6.2" fill="#8A6630">HOLDINGS</text>
+  <line x1="352" y1="84" x2="404" y2="84" stroke="#B38B4D" stroke-width="1"/>
+</svg>

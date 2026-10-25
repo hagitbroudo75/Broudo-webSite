@@ -1,0 +1,16 @@
+@* Numbered cards (01, 02, ...). *@
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<IPublishedElement>
+@{
+    var items = Model.Items("items");
+}
+<section class="section">
+    <div class="container stack gap-48">
+        @await Html.PartialAsync("Partials/Blocks/_Head", Model)
+        <div class="principles">
+            @for (var i = 0; i < items.Count; i++)
+            {
+                <div class="principle"><span class="principle__num">@((i + 1).ToString("00"))</span><h3 class="principle__title">@items[i].Text("heading")</h3><p class="principle__text">@items[i].Text("body")</p></div>
+            }
+        </div>
+    </div>
+</section>

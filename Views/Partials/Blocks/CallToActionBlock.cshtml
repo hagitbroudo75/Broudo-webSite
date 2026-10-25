@@ -1,0 +1,2 @@
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<IPublishedElement>
+@await Html.PartialAsync("Partials/Broudo/CallToAction", new CallToAction(Model.Text("heading") ?? "Let’s talk about what you’re looking for.", Model.Text("subtitle"), Model.Items("buttons")))

@@ -1,0 +1,26 @@
+@* The about page opening: heading (the page's h1), the founder's story, signature, portrait and two photos from the field. *@
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<IPublishedElement>
+@{
+    var settings = Umbraco.Settings();
+    var portrait = Model.Media("portrait") ?? settings?.Value<IPublishedContent>("founderPortrait");
+    var photos = Model.MediaList("photos");
+}
+<section class="section">
+    <div class="container split">
+        <div class="stack" style="gap:26px">
+            @if (Model.Text("eyebrow") is { } eyebrow) { <span class="eyebrow">@eyebrow</span> }
+            <h1 class="h1">@Model.Text("heading")</h1>
+            @BlockHelpers.Paragraphs(Model.Text("body"), "lead")
+            <div class="signature"><span class="signature__name">@settings.FounderName()</span><span class="signature__role">@(settings?.Value<string>("founderRole") ?? "Founder, Broudo Holdings")</span></div>
+        </div>
+        <div class="stack gap-20">
+            <div class="corner-frame">@BlockHelpers.Photo(portrait, "ratio-4-5", "Founder portrait", settings.FounderName())</div>
+            <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px">
+                @for (var i = 0; i < Math.Max(2, photos.Count); i++)
+                {
+                    @BlockHelpers.Photo(i < photos.Count ? photos[i] : null, "ratio-1-1", "On site", "On site")
+                }
+            </div>
+        </div>
+    </div>
+</section>

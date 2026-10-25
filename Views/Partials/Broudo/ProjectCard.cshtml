@@ -1,0 +1,17 @@
+@* A project card (projects page, featured projects, market pages). The data attributes are read by the filters in main.js. *@
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<IPublishedContent>
+@{
+    var type = Model.Value<string>("projectType") ?? "newConstruction";
+    var status = Model.Value<string>("projectStatus") ?? "inProgress";
+    var market = Model.Market();
+    var location = Model.Value<string>("locationLabel") ?? market?.MarketName();
+    var tags = new HtmlString($"<span class=\"card__tags\"><span class=\"tag tag--navy\">{Site.ProjectType(type)}</span><span class=\"tag tag--light\">{Site.ProjectStatus(status)}</span></span>");
+}
+<a href="@Model.Url()" class="card" data-project data-market="@(market?.Key.ToString() ?? "")" data-type="@type" data-status="@status">
+    @BlockHelpers.Photo(Model.Value<IPublishedContent>("heroImage"), "ratio-4-3", "Project photo", Model.Value<string>("heroImageAltText") ?? Model.Name, tags)
+    <div class="card__body">
+        @if (!string.IsNullOrEmpty(location)) { <span class="card__loc">@location</span> }
+        <span class="card__title">@Model.Name</span>
+        @if (Model.CardFacts() is { Length: > 0 } facts) { <span class="card__facts">@facts</span> }
+    </div>
+</a>

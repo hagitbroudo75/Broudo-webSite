@@ -1,0 +1,63 @@
+@* The contact page: the founder's invitation with the booking / WhatsApp / email links (from Site Settings) and the message form.
+   The form is a demo until it is connected (see main.js). *@
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<IPublishedElement>
+@{
+    var settings = Umbraco.Settings();
+    var portrait = settings?.Value<IPublishedContent>("founderPortrait");
+    var booking = settings?.Value<IEnumerable<Link>>("bookingUrl")?.FirstOrDefault();
+    var email = settings?.Value<string>("contactEmail");
+    var topics = Model.Lines("topics");
+    if (topics.Count == 0)
+    {
+        topics = ["Investing", "Partnership", "Buying a home", "Other"];
+    }
+}
+<section class="section">
+    <div class="container split" style="align-items:flex-start">
+        <div class="stack" style="gap:28px;flex:1 1 360px">
+            @if (Model.Text("eyebrow") is { } eyebrow) { <span class="eyebrow">@eyebrow</span> }
+            <div class="corner-frame corner-frame--sm">
+                @if (portrait is not null)
+                {
+                    <img src="@portrait.Url()" alt="@settings.FounderName()" class="ratio-4-5 media-cover" style="width:200px">
+                }
+                else
+                {
+                    <div class="ph ratio-4-5" style="width:200px;font-size:10px">Founder portrait</div>
+                }
+            </div>
+            <h1 class="h1" style="font-size:clamp(44px,5vw,68px)">@Model.Text("heading")</h1>
+            <span class="signature__name" style="font-size:24px">— @settings.FounderName()</span>
+            <div class="contact-links">
+                <a href="@(booking?.Url ?? "#")" class="contact-link contact-link--primary" target="@booking?.Target">Book a Zoom call<span class="contact-link__arrow" aria-hidden="true">→</span></a>
+                <a href="@settings.WhatsAppUrl()" class="contact-link">WhatsApp<span class="contact-link__arrow" aria-hidden="true">→</span></a>
+                @if (!string.IsNullOrEmpty(email))
+                {
+                    <a href="mailto:@email" class="contact-link">@email<span class="contact-link__arrow" aria-hidden="true">→</span></a>
+                }
+            </div>
+        </div>
+        <form class="form form--wide" id="message" data-demo-form>
+            <h2 class="form__full h2" style="font-size:36px;margin-bottom:4px">@(Model.Text("formHeading") ?? "Send a message")</h2>
+            <label class="field">Full name<input class="input" type="text" name="name" autocomplete="name" required></label>
+            <label class="field">Phone<input class="input" type="tel" name="phone" autocomplete="tel"></label>
+            <label class="field">Email<input class="input" type="email" name="email" autocomplete="email" required></label>
+            <label class="field">Country of residence<input class="input" type="text" name="country" autocomplete="country-name"></label>
+            <fieldset class="fieldset form__full">
+                <legend>I’m interested in</legend>
+                <div class="radio-row">
+                    @for (var i = 0; i < topics.Count; i++)
+                    {
+                        <label class="radio"><input type="radio" name="topic" value="@topics[i]" checked="@(i == 0)">@topics[i]</label>
+                    }
+                </div>
+            </fieldset>
+            <label class="field form__full">Message<textarea class="textarea" name="message" rows="5"></textarea></label>
+            <div class="form__full form__footer">
+                <span class="form__note">@(Model.Text("privacyNote") ?? "By submitting you agree to our privacy policy.")</span>
+                <button type="submit" class="btn btn--navy">Send message</button>
+            </div>
+            <p class="form__full form__success" role="status">@((Model.Text("successMessage") ?? "Thank you — {founder} will get back to you personally.").WithFounder(settings))</p>
+        </form>
+    </div>
+</section>

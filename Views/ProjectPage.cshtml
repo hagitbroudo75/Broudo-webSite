@@ -1,0 +1,165 @@
+@* A project: main photo, story and details, before / after slider, gallery, progress updates, optional results,
+   area map and more projects in the same market. Sections without content are left out. *@
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<IPublishedContent>
+@{
+    Layout = "Shared/_Layout.cshtml";
+    var market = Model.Market();
+    var parent = Model.Parent();
+    var location = string.Join(" · ", new[] { Model.Value<string>("neighborhood"), market?.MarketName() ?? Model.Value<string>("locationLabel") }.Where(part => !string.IsNullOrWhiteSpace(part)));
+    var hero = Model.Value<IPublishedContent>("heroImage");
+    var before = Model.Value<IPublishedContent>("beforeImage");
+    var after = Model.Value<IPublishedContent>("afterImage");
+    var gallery = Model.Value<IEnumerable<IPublishedContent>>("gallery")?.ToList() ?? [];
+    var updates = Model.Value<BlockListModel>("updates")?.Select(item => item.Content).ToList() ?? [];
+    var areaMap = Model.Value<IPublishedContent>("areaMapImage");
+    var duration = Model.Value<int?>("durationMonths");
+    var bathrooms = Model.Value<decimal?>("bathrooms");
+    string Number(int? value, string suffix = "") => value is > 0 ? value.Value.ToString("N0", System.Globalization.CultureInfo.InvariantCulture) + suffix : "—";
+    var facts = new List<(string Label, string Value)>
+    {
+        ("Living area", Number(Model.Value<int?>("livingArea"), " sq ft")),
+        ("Bedrooms / baths", Number(Model.Value<int?>("bedrooms")) + " / " + (bathrooms is > 0 ? bathrooms.Value.ToString("0.#", System.Globalization.CultureInfo.InvariantCulture) : "—")),
+        ("Lot size", Number(Model.Value<int?>("lotSize"), " sq ft")),
+        ("Started", Site.MonthYear(Model.Value<DateTime?>("startDate"))),
+        ("Completed", Site.MonthYear(Model.Value<DateTime?>("completionDate"))),
+        ("Duration", duration is > 0 ? duration + (duration == 1 ? " month" : " months") : "—"),
+    };
+    List<IPublishedContent> more = market is null ? [] : Umbraco.ProjectsIn(market).Where(project => project.Key != Model.Key).Take(3).ToList();
+    var marketName = market?.MarketName().Split(',')[0];
+}
+<section style="padding:32px var(--gutter) 0">
+    <div class="container stack" style="gap:28px">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            @if (parent is not null) { <a href="@parent.Url()">@parent.Name</a> <text>/</text> }
+            @if (market is not null) { <a href="@market.Url()">@market.MarketName()</a> <text>/</text> }
+            <span aria-current="page" style="color:var(--navy)">@Model.Name</span>
+        </nav>
+        <div class="stack" style="gap:16px">
+            <div style="display:flex;gap:8px"><span class="tag tag--navy" style="font-size:12px;padding:7px 12px">@Site.ProjectType(Model.Value<string>("projectType"))</span><span class="tag tag--outline" style="font-size:12px">@Site.ProjectStatus(Model.Value<string>("projectStatus"))</span></div>
+            <h1 class="h1">@Model.Name</h1>
+            @if (location != "") { <span class="card__loc" style="font-size:14px">@location</span> }
+        </div>
+        @BlockHelpers.Photo(hero, "ratio-21-9", "Main project photo — landscape, high resolution", Model.Value<string>("heroImageAltText") ?? Model.Name)
+    </div>
+</section>
+
+<section class="section" style="padding-top:48px">
+    <div class="container split" style="align-items:flex-start">
+        <div class="stack" style="gap:22px;flex:999 1 520px">
+            <h2 class="h2" style="font-size:38px">About the project</h2>
+            <div class="rich-text">@(Model.Value("body"))</div>
+        </div>
+        <aside class="facts-box" aria-label="Project details">
+            <span class="facts-box__title">PROJECT DETAILS</span>
+            <dl style="margin:0">
+                @foreach (var (label, value) in facts)
+                {
+                    <div class="facts-box__row"><dt>@label</dt><dd>@value</dd></div>
+                }
+            </dl>
+        </aside>
+    </div>
+</section>
+
+@if (before is not null || after is not null || Model.Value<string>("projectType") == "renovation")
+{
+    <section class="section section--white">
+        <div class="container stack gap-32">
+            <span class="eyebrow">Before &amp; after</span>
+            <div class="compare" data-compare>
+                <div class="compare__layer">@BlockHelpers.Photo(before, "ph--dark", "Before", "Before: " + Model.Name)</div>
+                <div class="compare__layer compare__layer--after">@BlockHelpers.Photo(after, "", "After", "After: " + Model.Name)</div>
+                <span class="compare__line"></span>
+                <span class="compare__handle" aria-hidden="true"><svg width="22" height="14" viewBox="0 0 22 14" fill="none" stroke="#F3F0EA" stroke-width="1.6"><path d="M7 1 L1 7 L7 13"/><path d="M15 1 L21 7 L15 13"/></svg></span>
+                <input class="compare__range" type="range" min="0" max="100" value="50" aria-label="Compare before and after">
+            </div>
+            <p class="muted" style="margin:0;font-size:14px">Same angle, before and after. Drag to compare.</p>
+        </div>
+    </section>
+}
+
+<section class="section">
+    <div class="container stack gap-32">
+        <span class="eyebrow">Gallery</span>
+        <div class="gallery">
+            @if (gallery.Count > 0)
+            {
+                foreach (var image in gallery)
+                {
+                    @BlockHelpers.Photo(image, "ratio-4-3", null, image.Name)
+                }
+            }
+            else
+            {
+                foreach (var label in new[] { "Drone", "Exterior", "Kitchen", "Living", "Bedroom", "Bath" })
+                {
+                    <div class="ph ratio-4-3">@label</div>
+                }
+            }
+        </div>
+    </div>
+</section>
+
+<section class="section section--white">
+    <div class="container split" style="align-items:flex-start">
+        @if (updates.Count > 0)
+        {
+            <div class="stack" style="gap:28px;flex:999 1 520px">
+                <span class="eyebrow">Progress updates</span>
+                <div class="updates">
+                    @foreach (var update in updates)
+                    {
+                        var image = update.Media("image");
+                        var date = update.Value<DateTime?>("date");
+                        <article class="update">
+                            @if (image is not null) { <img class="update__img media-cover" src="@image.Url()" alt="@update.Text("title")" loading="lazy"> } else { <div class="update__img"></div> }
+                            <div class="update__body">
+                                @if (date is { } d && d > DateTime.MinValue) { <span class="update__date">@d.ToString("MMMM d, yyyy", System.Globalization.CultureInfo.InvariantCulture).ToUpperInvariant()</span> }
+                                <h3 class="update__title">@update.Text("title")</h3>
+                                @if (update.Text("text") is { } text) { <p class="update__text" style="margin:0">@text</p> }
+                            </div>
+                        </article>
+                    }
+                </div>
+            </div>
+        }
+        <div class="stack gap-24" style="flex:1 1 300px">
+            @if (Model.Value<bool>("showResults"))
+            {
+                <div class="result-box">
+                    <span class="result-box__label">RESULTS</span>
+                    <span class="result-box__value">@(Model.Value<string>("resultValue"))</span>
+                    @if (Model.Value<string>("resultNote") is { Length: > 0 } note) { <span class="muted" style="font-size:14px">@note</span> }
+                </div>
+            }
+            @if (areaMap is not null)
+            {
+                @BlockHelpers.Photo(areaMap, "ph--light ratio-4-3", null, "Neighborhood map")
+            }
+            else
+            {
+                <div class="ph ph--light ratio-4-3">Neighborhood map — general area only<span class="area-ring"></span></div>
+            }
+        </div>
+    </div>
+</section>
+
+@if (more.Count > 0)
+{
+    <section class="section">
+        <div class="container stack gap-40">
+            <div class="section-head">
+                <h2 class="h2 h2--sm">More in @marketName</h2>
+                <a href="@market!.Url()" class="text-link">About the @marketName market</a>
+            </div>
+            <div class="card-grid">
+                @foreach (var project in more)
+                {
+                    @await Html.PartialAsync("Partials/Broudo/ProjectCard", project)
+                }
+            </div>
+        </div>
+    </section>
+}
+
+@await Html.PartialAsync("Partials/Broudo/CallToAction", new CallToAction("Interested in projects like this one?"))

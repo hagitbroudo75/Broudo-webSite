@@ -1,0 +1,31 @@
+@* On a market page: the projects whose market is this page. *@
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<IPublishedElement>
+@{
+    var market = Umbraco.AssignedContentItem;
+    var projects = Umbraco.ProjectsIn(market);
+    var link = Model.FirstLink("link");
+}
+<section class="section">
+    <div class="container stack gap-40">
+        <div class="section-head">
+            <h2 class="h2 h2--sm">@(Model.Text("heading") ?? "Projects in " + market.Name)</h2>
+            @if (link?.Url is not null)
+            {
+                <a href="@link.Url" class="text-link">@(Model.Text("linkLabel") ?? link.Name)</a>
+            }
+        </div>
+        @if (projects.Count > 0)
+        {
+            <div class="card-grid">
+                @foreach (var project in projects)
+                {
+                    @await Html.PartialAsync("Partials/Broudo/ProjectCard", project)
+                }
+            </div>
+        }
+        else
+        {
+            <div class="empty-state">No projects in this market yet.</div>
+        }
+    </div>
+</section>

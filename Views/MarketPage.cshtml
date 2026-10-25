@@ -1,0 +1,30 @@
+@* A market: the opening photo with tabs to the other markets, then the page's blocks. *@
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<IPublishedContent>
+@{
+    Layout = "Shared/_Layout.cshtml";
+    var image = Model.Value<IPublishedContent>("heroImage");
+    var markets = Model.Parent()?.Children().Where(page => page.ContentType.Alias == "MarketPage").ToList() ?? [Model];
+}
+<section class="hero hero--market" aria-label="@Model.Name" style="@(image is not null ? $"background-image:linear-gradient(rgba(14,27,44,.2),rgba(14,27,44,.75)),url('{image.Url()}')" : null)">
+    @if (image is null && Model.Value<string>("heroLabel") is { Length: > 0 } label)
+    {
+        <span class="hero__label">@label</span>
+    }
+    <div class="hero__inner" style="gap:22px">
+        @if (markets.Count > 1)
+        {
+            <nav class="market-tabs" aria-label="Markets">
+                @foreach (var market in markets)
+                {
+                    <a href="@market.Url()" aria-current="@(market.Key == Model.Key ? "page" : null)">@market.MarketName()</a>
+                }
+            </nav>
+        }
+        <h1 class="h1--market">@Model.Name</h1>
+        @if (Model.Value<string>("intro") is { Length: > 0 } intro)
+        {
+            <p class="hero__intro">@intro</p>
+        }
+    </div>
+</section>
+@await Html.PartialAsync("Partials/Broudo/Blocks", Model)

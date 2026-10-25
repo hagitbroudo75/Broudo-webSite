@@ -1,0 +1,15 @@
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<IPublishedElement>
+<section class="section section--navy">
+    <div class="container stack gap-48">
+        <div class="stack" style="gap:18px">
+            @if (Model.Text("eyebrow") is { } eyebrow) { <span class="eyebrow">@eyebrow</span> }
+            @if (Model.Text("heading") is { } heading) { <h2 class="h2">@heading</h2> }
+        </div>
+        <ol class="timeline" style="list-style:none;margin:0;padding:0">
+            @foreach (var item in Model.Items("items"))
+            {
+                <li class="timeline__item"><span class="timeline__year">@item.Text("year")</span><span class="timeline__text">@item.Text("text")</span></li>
+            }
+        </ol>
+    </div>
+</section>

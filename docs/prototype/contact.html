@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact — Broudo Holdings</title>
+  <meta name="description" content="Schedule a call or send a message to [Founder Name].">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;family=Manrope:wght@400;500;600&amp;display=swap">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+    <a href="index.html" class="logo" aria-label="Broudo Holdings — home">
+      <svg width="34" height="37" viewBox="0 0 110 120" aria-hidden="true"><path d="M5 38 V5 H38" fill="none" stroke="#B38B4D" stroke-width="4.5"/><path d="M72 115 H105 V82" fill="none" stroke="#B38B4D" stroke-width="4.5"/><text x="55" y="88" text-anchor="middle" font-family="Cormorant Garamond, serif" font-weight="600" font-size="78" fill="#F3F0EA">B</text></svg>
+      <span class="logo__words"><span class="logo__name">BROUDO</span><span class="logo__sub">HOLDINGS</span></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+      <svg width="22" height="16" viewBox="0 0 22 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M0 1h22M0 8h22M0 15h22"/></svg>
+    </button>
+    <nav class="site-nav" aria-label="Main">
+      <a href="about.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="markets.html">Markets</a>
+      <a href="contact.html" aria-current="page">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <span class="lang"><a href="#" aria-current="true">EN</a> / <a href="#" lang="he">עב</a></span>
+      <a href="contact.html" class="btn btn--brass btn--sm">Schedule a call</a>
+    </div>
+</header>
+
+<main id="main">
+  <section class="section">
+    <div class="container split" style="align-items:flex-start">
+      <div class="stack" style="gap:28px;flex:1 1 360px">
+        <span class="eyebrow">Contact</span>
+        <div class="corner-frame corner-frame--sm"><div class="ph ratio-4-5" style="width:200px;font-size:10px">Founder portrait</div></div>
+        <h1 class="h1" style="font-size:clamp(44px,5vw,68px)">I’d be glad to talk with you.</h1>
+        <span class="signature__name" style="font-size:24px">— [Founder Name]</span>
+        <div class="contact-links">
+          <a href="[CALENDLY_LINK]" class="contact-link contact-link--primary">Book a Zoom call<span class="contact-link__arrow" aria-hidden="true">→</span></a>
+          <a href="https://wa.me/[NUMBER]" class="contact-link">WhatsApp<span class="contact-link__arrow" aria-hidden="true">→</span></a>
+          <a href="mailto:[email@broudoholdings.com]" class="contact-link">[email@broudoholdings.com]<span class="contact-link__arrow" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <form class="form form--wide" data-demo-form>
+        <h2 class="form__full h2" style="font-size:36px;margin-bottom:4px">Send a message</h2>
+        <label class="field">Full name<input class="input" type="text" name="name" autocomplete="name" required></label>
+        <label class="field">Phone<input class="input" type="tel" name="phone" autocomplete="tel"></label>
+        <label class="field">Email<input class="input" type="email" name="email" autocomplete="email" required></label>
+        <label class="field">Country of residence<input class="input" type="text" name="country" autocomplete="country-name"></label>
+        <fieldset class="fieldset form__full">
+          <legend>I’m interested in</legend>
+          <div class="radio-row">
+            <label class="radio"><input type="radio" name="topic" value="Investing" checked>Investing</label>
+            <label class="radio"><input type="radio" name="topic" value="Partnership">Partnership</label>
+            <label class="radio"><input type="radio" name="topic" value="Buying a home">Buying a home</label>
+            <label class="radio"><input type="radio" name="topic" value="Other">Other</label>
+          </div>
+        </fieldset>
+        <label class="field form__full">Message<textarea class="textarea" name="message" rows="5"></textarea></label>
+        <div class="form__full form__footer">
+          <span class="form__note">By submitting you agree to our <a href="#">privacy policy</a>.</span>
+          <button type="submit" class="btn btn--navy">Send message</button>
+        </div>
+        <p class="form__full form__success" role="status">Thank you — [Founder Name] will get back to you personally.</p>
+      </form>
+    </div>
+  </section>
+
+  <section class="section section--white" style="padding-top:clamp(48px,6vw,80px);padding-bottom:clamp(48px,6vw,80px)">
+    <div class="container" style="display:flex;flex-wrap:wrap;gap:40px;justify-content:space-between;align-items:center">
+      <div class="company">
+        <span class="label-caps">COMPANY DETAILS</span>
+        <span style="font-weight:600;color:var(--navy)">Broudo Holdings [LLC]</span>
+        <span>Registered in [State], USA</span>
+        <span>[Mailing address]</span>
+      </div>
+      <form class="newsletter" data-demo-form>
+        <label class="label-caps" for="nl">PROJECT UPDATES BY EMAIL</label>
+        <div class="newsletter__row">
+          <input id="nl" class="input" type="email" name="email" placeholder="Your email" autocomplete="email" required>
+          <button type="submit" class="btn btn--brass" style="padding:15px 26px">Subscribe</button>
+        </div>
+        <p class="form__success" role="status">Thanks — you’re on the list.</p>
+      </form>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__top">
+      <div class="site-footer__brand">
+        <div class="logo"><svg width="34" height="37" viewBox="0 0 110 120" aria-hidden="true"><path d="M5 38 V5 H38" fill="none" stroke="#B38B4D" stroke-width="4.5"/><path d="M72 115 H105 V82" fill="none" stroke="#B38B4D" stroke-width="4.5"/><text x="55" y="88" text-anchor="middle" font-family="Cormorant Garamond, serif" font-weight="600" font-size="78" fill="#F3F0EA">B</text></svg><span class="logo__words"><span class="logo__name">BROUDO</span><span class="logo__sub">HOLDINGS</span></span></div>
+        <p class="site-footer__tagline">Real estate development in Atlanta and Florida.</p>
+      </div>
+      <div class="site-footer__cols">
+        <div class="site-footer__col"><span class="site-footer__heading">EXPLORE</span><a href="about.html">About</a><a href="projects.html">Projects</a><a href="markets.html">Markets</a></div>
+        <div class="site-footer__col"><span class="site-footer__heading">CONTACT</span><a href="mailto:[email@broudoholdings.com]">[email@broudoholdings.com]</a><a href="tel:[+10000000000]">[+1 000 000 0000]</a><a href="https://wa.me/[NUMBER]">WhatsApp</a><a href="contact.html">Schedule a call</a></div>
+        <div class="site-footer__col"><span class="site-footer__heading">FOLLOW</span><a href="#">LinkedIn</a><a href="#">Instagram</a></div>
+      </div>
+    </div>
+    <div class="site-footer__bottom">
+      <div class="site-footer__legal"><span>© <span data-year>2026</span> Broudo Holdings [LLC] · Registered in [State]</span><a href="#">Privacy policy</a><a href="#">Accessibility statement</a><a href="#">Disclaimer</a></div>
+      <p class="site-footer__disclaimer">[Disclaimer: the information on this site is general and does not constitute an offer to sell or a solicitation to buy any security. Final wording to be reviewed by counsel.]</p>
+    </div>
+  </div>
+</footer>
+
+<a class="whatsapp-fab" href="https://wa.me/[NUMBER]" aria-label="Chat on WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0E1B2C" stroke-width="1.8" aria-hidden="true"><path d="M3.5 20.5l1.3-4.2A8.5 8.5 0 1 1 8 19.4z"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1.2-1.6-2-1-1 .8c-1-.4-2-1.4-2.4-2.4l.8-1-1-2z"/></svg>
+</a>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

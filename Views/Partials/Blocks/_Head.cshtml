@@ -1,0 +1,23 @@
+@* Eyebrow + heading that opens most sections; with a link (Model.LinkLabel) it becomes the heading row with the link at the end. *@
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<IPublishedElement>
+@{
+    var link = Model.FirstLink("link");
+    var linkLabel = Model.Text("linkLabel") ?? link?.Name;
+}
+@if (link?.Url is not null && linkLabel is not null)
+{
+    <div class="section-head">
+        <div class="section-head__text">
+            @if (Model.Text("eyebrow") is { } eyebrow) { <span class="eyebrow">@eyebrow</span> }
+            @if (Model.Text("heading") is { } heading) { <h2 class="h2">@heading</h2> }
+        </div>
+        <a href="@link.Url" class="text-link" target="@link.Target">@linkLabel</a>
+    </div>
+}
+else
+{
+    <div class="section-head__text">
+        @if (Model.Text("eyebrow") is { } eyebrow) { <span class="eyebrow">@eyebrow</span> }
+        @if (Model.Text("heading") is { } heading) { <h2 class="h2">@heading</h2> }
+    </div>
+}

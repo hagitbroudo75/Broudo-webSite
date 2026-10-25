@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>[Project name] — Broudo Holdings</title>
+  <meta name="description" content="[Project summary, up to two lines.]">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;family=Manrope:wght@400;500;600&amp;display=swap">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+    <a href="index.html" class="logo" aria-label="Broudo Holdings — home">
+      <svg width="34" height="37" viewBox="0 0 110 120" aria-hidden="true"><path d="M5 38 V5 H38" fill="none" stroke="#B38B4D" stroke-width="4.5"/><path d="M72 115 H105 V82" fill="none" stroke="#B38B4D" stroke-width="4.5"/><text x="55" y="88" text-anchor="middle" font-family="Cormorant Garamond, serif" font-weight="600" font-size="78" fill="#F3F0EA">B</text></svg>
+      <span class="logo__words"><span class="logo__name">BROUDO</span><span class="logo__sub">HOLDINGS</span></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+      <svg width="22" height="16" viewBox="0 0 22 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M0 1h22M0 8h22M0 15h22"/></svg>
+    </button>
+    <nav class="site-nav" aria-label="Main">
+      <a href="about.html">About</a>
+      <a href="projects.html" aria-current="page">Projects</a>
+      <a href="markets.html">Markets</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <span class="lang"><a href="#" aria-current="true">EN</a> / <a href="#" lang="he">עב</a></span>
+      <a href="contact.html" class="btn btn--brass btn--sm">Schedule a call</a>
+    </div>
+</header>
+
+<main id="main">
+  <section style="padding:32px var(--gutter) 0">
+    <div class="container stack" style="gap:28px">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="projects.html">Projects</a> / <a href="markets.html">Atlanta, GA</a> / <span aria-current="page" style="color:var(--navy)">[Project name]</span></nav>
+      <div class="stack" style="gap:16px">
+        <div style="display:flex;gap:8px"><span class="tag tag--navy" style="font-size:12px;padding:7px 12px">Renovation</span><span class="tag tag--outline" style="font-size:12px">Completed</span></div>
+        <h1 class="h1">[Project name]</h1>
+        <span class="card__loc" style="font-size:14px">[Neighborhood] · Atlanta, GA</span>
+      </div>
+      <div class="ph ratio-21-9">Main project photo — landscape, high resolution</div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:48px">
+    <div class="container split" style="align-items:flex-start">
+      <div class="stack" style="gap:22px;flex:999 1 520px">
+        <h2 class="h2" style="font-size:38px">About the project</h2>
+        <p class="body">[The starting point — what the property looked like and why we chose it.]</p>
+        <p class="body">[What we did — scope of work, design decisions, materials.]</p>
+        <p class="body">[The result — the finished home and what happened next.]</p>
+      </div>
+      <aside class="facts-box" aria-label="Project details">
+        <span class="facts-box__title">PROJECT DETAILS</span>
+        <dl style="margin:0">
+          <div class="facts-box__row"><dt>Living area</dt><dd>[0,000] sq ft</dd></div>
+          <div class="facts-box__row"><dt>Bedrooms / baths</dt><dd>[0] / [0]</dd></div>
+          <div class="facts-box__row"><dt>Lot size</dt><dd>[0,000] sq ft</dd></div>
+          <div class="facts-box__row"><dt>Started</dt><dd>[Month Year]</dd></div>
+          <div class="facts-box__row"><dt>Completed</dt><dd>[Month Year]</dd></div>
+          <div class="facts-box__row"><dt>Duration</dt><dd>[0] months</dd></div>
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section section--white">
+    <div class="container stack gap-32">
+      <span class="eyebrow">Before &amp; after</span>
+      <div class="compare" data-compare>
+        <div class="compare__layer"><div class="ph ph--dark">Before</div></div>
+        <div class="compare__layer compare__layer--after"><div class="ph">After</div></div>
+        <span class="compare__line"></span>
+        <span class="compare__handle" aria-hidden="true"><svg width="22" height="14" viewBox="0 0 22 14" fill="none" stroke="#F3F0EA" stroke-width="1.6"><path d="M7 1 L1 7 L7 13"/><path d="M15 1 L21 7 L15 13"/></svg></span>
+        <input class="compare__range" type="range" min="0" max="100" value="50" aria-label="Compare before and after">
+      </div>
+      <p class="muted" style="margin:0;font-size:14px">Same angle, before and after. Drag to compare.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container stack gap-32">
+      <span class="eyebrow">Gallery</span>
+      <div class="gallery">
+        <div class="ph ratio-4-3">Drone</div>
+        <div class="ph ratio-4-3">Exterior</div>
+        <div class="ph ratio-4-3">Kitchen</div>
+        <div class="ph ratio-4-3">Living</div>
+        <div class="ph ratio-4-3">Bedroom</div>
+        <div class="ph ratio-4-3">Bath</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--white">
+    <div class="container split" style="align-items:flex-start">
+      <div class="stack" style="gap:28px;flex:999 1 520px">
+        <span class="eyebrow">Progress updates</span>
+        <div class="updates">
+          <article class="update"><div class="update__img"></div><div class="update__body"><span class="update__date">[MONTH DAY, YEAR]</span><h3 class="update__title">Acquisition closed</h3><p class="update__text" style="margin:0">[Short update — one or two sentences.]</p></div></article>
+          <article class="update"><div class="update__img"></div><div class="update__body"><span class="update__date">[MONTH DAY, YEAR]</span><h3 class="update__title">Demolition and framing</h3><p class="update__text" style="margin:0">[Short update — one or two sentences.]</p></div></article>
+          <article class="update"><div class="update__img"></div><div class="update__body"><span class="update__date">[MONTH DAY, YEAR]</span><h3 class="update__title">Finishes and handover</h3><p class="update__text" style="margin:0">[Short update — one or two sentences.]</p></div></article>
+        </div>
+      </div>
+      <div class="stack gap-24" style="flex:1 1 300px">
+        <!-- Optional: show only when "display results" is enabled in the CMS -->
+        <div class="result-box">
+          <span class="result-box__label">RESULTS · OPTIONAL</span>
+          <span class="result-box__value">[+00%]</span>
+          <span class="muted" style="font-size:14px">[Value before vs. after — shown only when enabled]</span>
+        </div>
+        <div class="ph ph--light ratio-4-3">Neighborhood map — general area only<span class="area-ring"></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container stack gap-40">
+      <div class="section-head">
+        <h2 class="h2 h2--sm">More in Atlanta</h2>
+        <a href="markets.html" class="text-link">About the Atlanta market</a>
+      </div>
+      <div class="card-grid">
+        <a href="project.html" class="card" data-project data-market="Atlanta" data-type="New construction" data-status="Completed">
+          <div class="ph ratio-4-3">Project photo
+            <span class="card__tags"><span class="tag tag--navy">New construction</span><span class="tag tag--light">Completed</span></span>
+          </div>
+          <div class="card__body">
+            <span class="card__loc">Atlanta, GA</span>
+            <span class="card__title">[Project name]</span>
+            <span class="card__facts">[0,000] sq ft · [0] bd · [0] ba · [Year]</span>
+          </div>
+        </a>
+        <a href="project.html" class="card" data-project data-market="Atlanta" data-type="Renovation" data-status="For sale">
+          <div class="ph ratio-4-3">Project photo
+            <span class="card__tags"><span class="tag tag--navy">Renovation</span><span class="tag tag--light">For sale</span></span>
+          </div>
+          <div class="card__body">
+            <span class="card__loc">Atlanta, GA</span>
+            <span class="card__title">[Project name]</span>
+            <span class="card__facts">[0,000] sq ft · [0] bd · [0] ba · [Year]</span>
+          </div>
+        </a>
+        <a href="project.html" class="card" data-project data-market="Atlanta" data-type="New construction" data-status="In progress">
+          <div class="ph ratio-4-3">Project photo
+            <span class="card__tags"><span class="tag tag--navy">New construction</span><span class="tag tag--light">In progress</span></span>
+          </div>
+          <div class="card__body">
+            <span class="card__loc">Atlanta, GA</span>
+            <span class="card__title">[Project name]</span>
+            <span class="card__facts">[0,000] sq ft · [0] bd · [0] ba · [Year]</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="cta__inner">
+      <div class="cta__lead">
+        <div class="cta__avatar" role="img" aria-label="[Founder Name]"></div>
+        <div class="cta__text">
+          <h2 class="cta__title">Interested in projects like this one?</h2>
+          <p class="cta__sub">A 20-minute call with [Founder Name] — no obligation.</p>
+        </div>
+      </div>
+      <div class="btn-row">
+        <a href="contact.html" class="btn btn--navy">Schedule a call</a>
+        <a href="contact.html" class="btn btn--outline">Send a message</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__top">
+      <div class="site-footer__brand">
+        <div class="logo"><svg width="34" height="37" viewBox="0 0 110 120" aria-hidden="true"><path d="M5 38 V5 H38" fill="none" stroke="#B38B4D" stroke-width="4.5"/><path d="M72 115 H105 V82" fill="none" stroke="#B38B4D" stroke-width="4.5"/><text x="55" y="88" text-anchor="middle" font-family="Cormorant Garamond, serif" font-weight="600" font-size="78" fill="#F3F0EA">B</text></svg><span class="logo__words"><span class="logo__name">BROUDO</span><span class="logo__sub">HOLDINGS</span></span></div>
+        <p class="site-footer__tagline">Real estate development in Atlanta and Florida.</p>
+      </div>
+      <div class="site-footer__cols">
+        <div class="site-footer__col"><span class="site-footer__heading">EXPLORE</span><a href="about.html">About</a><a href="projects.html">Projects</a><a href="markets.html">Markets</a></div>
+        <div class="site-footer__col"><span class="site-footer__heading">CONTACT</span><a href="mailto:[email@broudoholdings.com]">[email@broudoholdings.com]</a><a href="tel:[+10000000000]">[+1 000 000 0000]</a><a href="https://wa.me/[NUMBER]">WhatsApp</a><a href="contact.html">Schedule a call</a></div>
+        <div class="site-footer__col"><span class="site-footer__heading">FOLLOW</span><a href="#">LinkedIn</a><a href="#">Instagram</a></div>
+      </div>
+    </div>
+    <div class="site-footer__bottom">
+      <div class="site-footer__legal"><span>© <span data-year>2026</span> Broudo Holdings [LLC] · Registered in [State]</span><a href="#">Privacy policy</a><a href="#">Accessibility statement</a><a href="#">Disclaimer</a></div>
+      <p class="site-footer__disclaimer">[Disclaimer: the information on this site is general and does not constitute an offer to sell or a solicitation to buy any security. Final wording to be reviewed by counsel.]</p>
+    </div>
+  </div>
+</footer>
+
+<a class="whatsapp-fab" href="https://wa.me/[NUMBER]" aria-label="Chat on WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0E1B2C" stroke-width="1.8" aria-hidden="true"><path d="M3.5 20.5l1.3-4.2A8.5 8.5 0 1 1 8 19.4z"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1.2-1.6-2-1-1 .8c-1-.4-2-1.4-2.4-2.4l.8-1-1-2z"/></svg>
+</a>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

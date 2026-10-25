@@ -1,0 +1,9 @@
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<IPublishedElement>
+<section class="stats" aria-label="Key figures">
+    <div class="stats__grid">
+        @foreach (var stat in Model.Items("items"))
+        {
+            <div class="stat"><span class="stat__value">@stat.Text("value")</span><span class="stat__label">@stat.Text("label")</span></div>
+        }
+    </div>
+</section>

@@ -1,0 +1,51 @@
+@* The projects page: filters by market / type / status, grid or map view (see main.js). Only filters with projects are shown. *@
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<IPublishedContent>
+@{
+    var projects = Model.Children().Where(page => page.ContentType.Alias == "ProjectPage").ToList();
+    var markets = Umbraco.Markets().Where(market => projects.Any(project => project.Market()?.Key == market.Key))
+        .Select(market => (Value: market.Key.ToString(), Label: market.Value<string>("shortName") is { Length: > 0 } shortName ? shortName.Split(',')[0] : market.Name)).ToList();
+    var groups = new[]
+    {
+        (Key: "market", Label: "MARKET", Aria: "Filter by market", Options: markets),
+        (Key: "type", Label: "TYPE", Aria: "Filter by type", Options: Site.ProjectTypes.ToList()),
+        (Key: "status", Label: "STATUS", Aria: "Filter by status", Options: Site.ProjectStatuses.ToList()),
+    };
+}
+<section style="padding:0 var(--gutter)">
+    <div class="filters" data-filters>
+        @foreach (var group in groups)
+        {
+            <div class="filter-row" role="group" aria-label="@group.Aria">
+                <span class="filter-row__label">@group.Label</span>
+                <button type="button" class="pill" data-filter="@group.Key" data-value="All" aria-pressed="true">All</button>
+                @foreach (var (value, label) in group.Options)
+                {
+                    <button type="button" class="pill" data-filter="@group.Key" data-value="@value" aria-pressed="false">@label</button>
+                }
+                @if (group.Key == "status")
+                {
+                    <div class="view-toggle" role="group" aria-label="View">
+                        <button type="button" data-view="grid" aria-pressed="true">Grid</button>
+                        <button type="button" data-view="map" aria-pressed="false">Map</button>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</section>
+
+<section class="section" style="padding-top:40px">
+    <div class="container stack" style="gap:28px">
+        <span class="muted" style="font-size:14px" data-count aria-live="polite"></span>
+        <div class="card-grid" data-grid>
+            @foreach (var project in projects)
+            {
+                @await Html.PartialAsync("Partials/Broudo/ProjectCard", project)
+            }
+        </div>
+        <div class="map" data-map hidden>
+            <span class="map__label">PROJECTS MAP — CONNECT GOOGLE MAPS / MAPBOX HERE</span>
+        </div>
+        <div class="empty-state" data-empty hidden>No projects match these filters yet.</div>
+    </div>
+</section>

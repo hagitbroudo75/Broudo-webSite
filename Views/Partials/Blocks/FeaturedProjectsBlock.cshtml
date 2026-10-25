@@ -1,0 +1,16 @@
+@* The chosen projects, or the first three projects when none are chosen. *@
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<IPublishedElement>
+@{
+    var projects = Model.Value<IEnumerable<IPublishedContent>>("projects")?.ToList() is { Count: > 0 } chosen ? chosen : Umbraco.Projects().Take(3).ToList();
+}
+<section class="section">
+    <div class="container stack gap-48">
+        @await Html.PartialAsync("Partials/Blocks/_Head", Model)
+        <div class="card-grid">
+            @foreach (var project in projects)
+            {
+                @await Html.PartialAsync("Partials/Broudo/ProjectCard", project)
+            }
+        </div>
+    </div>
+</section>

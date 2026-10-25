@@ -1,0 +1,22 @@
+@* The U.S. map with a pin for each market page that has a map position; the count is the market's projects. *@
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<IPublishedElement>
+@{
+    var mapImage = Model.Media("mapImage");
+    var markets = Umbraco.Markets().Where(market => market.Value<int?>("mapLeft") is not null && market.Value<int?>("mapTop") is not null).ToList();
+}
+<section class="section section--white">
+    <div class="container stack gap-48">
+        @await Html.PartialAsync("Partials/Blocks/_Head", Model)
+        <div class="map" style="@(mapImage is not null ? $"background:url('{mapImage.Url()}') center/cover" : null)">
+            @if (mapImage is null && Model.Text("mapLabel") is { } label)
+            {
+                <span class="map__label">@label</span>
+            }
+            @foreach (var market in markets)
+            {
+                var count = Umbraco.ProjectsIn(market).Count;
+                <a class="map__pin" href="@market.Url()" style="left:@(market.Value<int>("mapLeft"))%;top:@(market.Value<int>("mapTop"))%"><span class="map__dot"></span><span class="map__text"><span class="map__city">@market.MarketName()</span><span class="map__count">@count @(count == 1 ? "project" : "projects")</span></span></a>
+            }
+        </div>
+    </div>
+</section>

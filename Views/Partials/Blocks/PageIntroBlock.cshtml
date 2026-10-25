@@ -1,0 +1,9 @@
+@* Eyebrow, the page's h1 and a lead paragraph (projects page, text pages). *@
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<IPublishedElement>
+<section class="section" style="padding-bottom:40px">
+    <div class="container stack" style="gap:22px">
+        @if (Model.Text("eyebrow") is { } eyebrow) { <span class="eyebrow">@eyebrow</span> }
+        <h1 class="h1">@Model.Text("heading")</h1>
+        @BlockHelpers.Paragraphs(Model.Text("lead"), "lead")
+    </div>
+</section>

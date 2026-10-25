@@ -1,0 +1,20 @@
+@* Renders a page's content blocks. Each block has a partial in Partials/Blocks/{alias}.cshtml.
+   The projects page shows its project list (filters + cards) right after the page intro, or first when it has no intro. *@
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<IPublishedContent>
+@{
+    var items = Model.Value<BlockListModel>("contentBlocks")?.Select(item => item.Content).ToList() ?? [];
+    var isProjects = Model.ContentType.Alias == "ProjectsPage";
+    var introIndex = isProjects ? items.FindIndex(item => item.ContentType.Alias == "PageIntroBlock") : -1;
+}
+@if (isProjects && introIndex < 0)
+{
+    @await Html.PartialAsync("Partials/Broudo/ProjectList", Model)
+}
+@for (var i = 0; i < items.Count; i++)
+{
+    @await Html.PartialAsync("Partials/Blocks/" + items[i].ContentType.Alias, items[i])
+    if (i == introIndex)
+    {
+        @await Html.PartialAsync("Partials/Broudo/ProjectList", Model)
+    }
+}

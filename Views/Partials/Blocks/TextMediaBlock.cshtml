@@ -1,0 +1,19 @@
+@* Text with chips next to a photo ("What we do here" on the market pages). *@
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<IPublishedElement>
+@{
+    var chips = Model.Lines("chips");
+}
+<section class="section@(Model.Text("background") == "limestone" ? "" : " section--white")">
+    <div class="container split split--center">
+        <div class="stack" style="gap:22px">
+            @if (Model.Text("eyebrow") is { } eyebrow) { <span class="eyebrow">@eyebrow</span> }
+            @if (Model.Text("heading") is { } heading) { <h2 class="h2">@heading</h2> }
+            @BlockHelpers.Paragraphs(Model.Text("body"), "body")
+            @if (chips.Count > 0)
+            {
+                <div class="chips">@foreach (var chip in chips) { <span class="chip">@chip</span> }</div>
+            }
+        </div>
+        @BlockHelpers.Photo(Model.Media("image"), "ph--light ratio-4-3", Model.Text("imageLabel"), Model.Text("heading"))
+    </div>
+</section>

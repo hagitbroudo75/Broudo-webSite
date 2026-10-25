@@ -1,0 +1,24 @@
+@* Portrait in the brass corner frame, a first-person quote and the founder's signature (name and role from Site Settings). *@
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<IPublishedElement>
+@{
+    var settings = Umbraco.Settings();
+    var portrait = Model.Media("portrait") ?? settings?.Value<IPublishedContent>("founderPortrait");
+    var link = Model.FirstLink("link");
+}
+<section class="section">
+    <div class="container split split--center">
+        <div class="corner-frame">
+            @BlockHelpers.Photo(portrait, "ratio-4-5", "Founder portrait", settings.FounderName())
+        </div>
+        <div class="stack gap-24">
+            @if (Model.Text("eyebrow") is { } eyebrow) { <span class="eyebrow">@eyebrow</span> }
+            @if (Model.Text("quote") is { } quote) { <h2 class="quote-h">“@quote”</h2> }
+            @BlockHelpers.Paragraphs(Model.Text("body"), "body")
+            <div class="signature"><span class="signature__name">@settings.FounderName()</span><span class="signature__role">@(settings?.Value<string>("founderRole") ?? "Founder, Broudo Holdings")</span></div>
+            @if (link?.Url is not null)
+            {
+                <a href="@link.Url" class="text-link">@(Model.Text("linkLabel") ?? link.Name)</a>
+            }
+        </div>
+    </div>
+</section>

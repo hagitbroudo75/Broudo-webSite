@@ -1,0 +1,28 @@
+@* "What we do": columns with a photo (or a before / after pair), heading and text. *@
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<IPublishedElement>
+<section class="section section--white">
+    <div class="container stack gap-48">
+        @await Html.PartialAsync("Partials/Blocks/_Head", Model)
+        <div class="two-col">
+            @foreach (var item in Model.Items("items"))
+            {
+                <div class="stack gap-20">
+                    @if (item.Text("mediaStyle") == "beforeAfter")
+                    {
+                        <div class="split-ph ratio-3-2">
+                            @BlockHelpers.Photo(item.Media("beforeImage"), "ph--dark", "Before", "Before")
+                            <div class="ph" style="justify-content:flex-end">@if (item.Media("afterImage") is { } after) { <img class="ph__img" src="@after.Url()" alt="After" loading="lazy"> } else { <text>After</text> }</div>
+                            <span class="split-ph__line"></span>
+                        </div>
+                    }
+                    else
+                    {
+                        @BlockHelpers.Photo(item.Media("image"), "ratio-3-2", item.Text("imageLabel"), item.Text("heading"))
+                    }
+                    <h3 class="h3">@item.Text("heading")</h3>
+                    @BlockHelpers.Paragraphs(item.Text("body"), "body")
+                </div>
+            }
+        </div>
+    </div>
+</section>
