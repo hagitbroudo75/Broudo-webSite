@@ -1,9 +1,16 @@
+using Microsoft.AspNetCore.DataProtection;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 #if DEBUG
 builder.Configuration.AddJsonFile("appsettings.Local.json", optional: true, reloadOnChange: true);
 #endif
+
+// Keeps backoffice logins valid across deploys (the container's own files are replaced on every deploy)
+if (builder.Configuration["Broudo:DataProtectionKeysPath"] is { Length: > 0 } keysPath)
+{
+    builder.Services.AddDataProtection().PersistKeysToFileSystem(new DirectoryInfo(keysPath));
+}
 
 builder.CreateUmbracoBuilder()
     .AddBackOffice()

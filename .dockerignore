@@ -1,0 +1,9 @@
+bin/
+obj/
+umbraco/Data/
+umbraco/Logs/
+wwwroot/media/
+docs/
+tools/
+appsettings.Local.json
+**/.DS_Store

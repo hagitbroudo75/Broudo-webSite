@@ -8,9 +8,9 @@ using Umbraco.Cms.Core.Services;
 namespace BroudoHoldings.Seeding;
 
 /// <summary>
-/// Development only. Creates the empty page tree (Home + section pages) on a fresh database, so every
-/// Razor template has a URL to render at, then fills empty pages with the default content
-/// (see <see cref="DefaultContentSeeder"/>). Never changes content that editors created.
+/// Development, or when Broudo:SeedDefaultContent is on (the server's first start). Creates the empty page tree
+/// (Home + section pages) on a fresh database, so every Razor template has a URL to render at, then fills empty
+/// pages with the default content (see <see cref="DefaultContentSeeder"/>). Never changes content that editors created.
 /// </summary>
 public class DevelopmentContentSeeder : INotificationAsyncHandler<UmbracoApplicationStartedNotification>
 {
@@ -23,6 +23,7 @@ public class DevelopmentContentSeeder : INotificationAsyncHandler<UmbracoApplica
     ];
 
     private readonly IHostEnvironment _environment;
+    private readonly IConfiguration _configuration;
     private readonly IContentService _contentService;
     private readonly IContentTypeService _contentTypeService;
     private readonly ITemplateService _templateService;
@@ -32,6 +33,7 @@ public class DevelopmentContentSeeder : INotificationAsyncHandler<UmbracoApplica
 
     public DevelopmentContentSeeder(
         IHostEnvironment environment,
+        IConfiguration configuration,
         IContentService contentService,
         IContentTypeService contentTypeService,
         ITemplateService templateService,
@@ -40,6 +42,7 @@ public class DevelopmentContentSeeder : INotificationAsyncHandler<UmbracoApplica
         ILogger<DevelopmentContentSeeder> logger)
     {
         _environment = environment;
+        _configuration = configuration;
         _contentService = contentService;
         _contentTypeService = contentTypeService;
         _templateService = templateService;
@@ -50,7 +53,7 @@ public class DevelopmentContentSeeder : INotificationAsyncHandler<UmbracoApplica
 
     public async Task HandleAsync(UmbracoApplicationStartedNotification notification, CancellationToken cancellationToken)
     {
-        if (!_environment.IsDevelopment())
+        if (!_environment.IsDevelopment() && !_configuration.GetValue<bool>("Broudo:SeedDefaultContent"))
         {
             return;
         }
