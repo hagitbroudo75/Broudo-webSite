@@ -8,7 +8,7 @@ TARGET="$HOME/Projects/BroudoHoldings-local"
 mkdir -p "$TARGET"
 rsync -a --delete \
   --exclude bin/ --exclude obj/ --exclude umbraco/Data/ --exclude umbraco/Logs/ --exclude umbraco/mediacache/ \
-  --exclude wwwroot/media/ --exclude .DS_Store \
+  --exclude wwwroot/media/ --exclude .git/ --exclude .DS_Store \
   "$SOURCE/" "$TARGET/"
 echo "Synced to $TARGET"
 if [ "$1" = "run" ]; then

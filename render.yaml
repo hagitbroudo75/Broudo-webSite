@@ -1,0 +1,25 @@
+# Render Blueprint: the Broudo Holdings website (Umbraco), built from the Dockerfile.
+# Render → New → Blueprint → pick this repository.
+services:
+  - type: web
+    name: broudo-website
+    runtime: docker
+    plan: starter            # a persistent disk needs a paid instance
+    region: frankfurt        # closest Render region to Israel; cannot be changed later
+    branch: main
+    dockerfilePath: ./Dockerfile
+    autoDeploy: true         # every push to main is deployed
+    healthCheckPath: /
+    disk:
+      name: broudo-website-data   # database, uploaded media and login keys (see appsettings.Production.json)
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      # Backoffice administrator, created on the first start (empty database) only.
+      # Render asks for these values when the Blueprint is created.
+      - key: Umbraco__CMS__Unattended__UnattendedUserName
+        sync: false
+      - key: Umbraco__CMS__Unattended__UnattendedUserEmail
+        sync: false
+      - key: Umbraco__CMS__Unattended__UnattendedUserPassword
+        sync: false
