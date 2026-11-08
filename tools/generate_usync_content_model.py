@@ -88,43 +88,43 @@ def blocks(alias, name, allowed, tab="content"):
 
 
 BLOCKS = {
-    "ButtonLinkBlock": [text("label", "תווית"), url("link", "קישור"), dropdown("style", "סגנון", ["brass", "navy", "outline", "outlineLight", "textLink"])],
-    "HeroBlock": [text("eyebrow", "כותרת משנה"), text("heading", "כותרת"), area("intro", "פתיח"), image("backgroundImage", "תמונת רקע"), text("photoLabel", "תווית כשאין תמונה"), blocks("buttons", "כפתורים", ["ButtonLinkBlock"])],
-    "StatsBlock": [blocks("items", "נתונים", ["StatItemBlock"])],
-    "StatItemBlock": [text("value", "ערך"), text("label", "תווית")],
-    "FounderIntroBlock": [text("eyebrow", "כותרת משנה"), area("quote", "ציטוט"), area("body", "טקסט"), image("portrait", "פורטרט (ריק: מהגדרות האתר)"), text("linkLabel", "תווית קישור"), url("link", "קישור")],
-    "MarketsMapBlock": [text("eyebrow", "כותרת משנה"), text("heading", "כותרת"), text("linkLabel", "תווית קישור"), url("link", "קישור"), image("mapImage", "תמונת מפה"), text("mapLabel", "תווית כשאין מפה")],
-    "FeaturedProjectsBlock": [text("eyebrow", "כותרת משנה"), text("heading", "כותרת"), field("projects", "פרויקטים (ריק: שלושת הראשונים)", "contentPickerMultiple"), text("linkLabel", "תווית קישור"), url("link", "קישור")],
-    "DisciplinesBlock": [text("eyebrow", "כותרת משנה"), text("heading", "כותרת"), blocks("items", "תחומים", ["DisciplineItemBlock"])],
-    "DisciplineItemBlock": [text("heading", "כותרת"), area("body", "תיאור"), dropdown("mediaStyle", "תצוגה (photo: תמונה אחת, beforeAfter: לפני/אחרי)", ["photo", "beforeAfter"]), image("image", "תמונה"), text("imageLabel", "תווית כשאין תמונה"), image("beforeImage", "תמונת לפני"), image("afterImage", "תמונת אחרי")],
-    "CallToActionBlock": [text("heading", "כותרת"), text("subtitle", "שורת משנה ({founder} = שם המייסד)"), blocks("buttons", "כפתורים", ["ButtonLinkBlock"])],
-    "StoryBlock": [text("eyebrow", "כותרת משנה"), text("heading", "כותרת"), area("body", "טקסט (פסקה בכל שורה)"), image("portrait", "פורטרט (ריק: מהגדרות האתר)"), field("photos", "תמונות מהשטח", "multiImage")],
-    "TimelineBlock": [text("eyebrow", "כותרת משנה"), text("heading", "כותרת"), blocks("items", "אבני דרך", ["TimelineItemBlock"])],
-    "TimelineItemBlock": [text("year", "שנה"), text("text", "טקסט")],
-    "PrinciplesBlock": [text("eyebrow", "כותרת משנה"), text("heading", "כותרת"), blocks("items", "עקרונות", ["PrincipleItemBlock"])],
-    "PrincipleItemBlock": [text("heading", "כותרת"), area("body", "תיאור")],
-    "PageIntroBlock": [text("eyebrow", "כותרת משנה"), text("heading", "כותרת"), area("lead", "פתיח")],
-    "ReasonsBlock": [text("eyebrow", "כותרת משנה"), text("heading", "כותרת"), blocks("items", "נתונים", ["ReasonItemBlock"])],
-    "ReasonItemBlock": [text("value", "ערך"), text("title", "כותרת"), area("text", "הסבר"), text("source", "מקור")],
-    "TextMediaBlock": [text("eyebrow", "כותרת משנה"), text("heading", "כותרת"), area("body", "טקסט (פסקה בכל שורה)"), area("chips", "תגיות (אחת בכל שורה)"), image("image", "תמונה"), text("imageLabel", "תווית כשאין תמונה"), dropdown("background", "רקע", ["limestone", "white"])],
-    "MarketProjectsBlock": [text("heading", "כותרת (ריק: Projects in + שם השוק)"), text("linkLabel", "תווית קישור"), url("link", "קישור")],
-    "ContactBlock": [text("eyebrow", "כותרת משנה"), text("heading", "כותרת"), text("formHeading", "כותרת הטופס"), area("topics", "נושאי פנייה (אחד בכל שורה)"), area("privacyNote", "הערת פרטיות"), area("successMessage", "הודעה אחרי שליחה")],
-    "NewsletterBlock": [text("heading", "כותרת ההרשמה"), text("placeholder", "טקסט בשדה הדוא״ל"), text("submitLabel", "תווית כפתור"), area("successMessage", "הודעה אחרי הרשמה")],
-    "RichTextBlock": [field("body", "תוכן", "richtext")],
-    "ProjectUpdateBlock": [date("date", "תאריך"), text("title", "כותרת"), area("text", "טקסט"), image("image", "תמונה")],
-    "NavigationLinkBlock": [text("label", "תווית"), url("link", "קישור")],
+    "ButtonLinkBlock": [text("label", "Label"), url("link", "Link"), dropdown("style", "Style", ["brass", "navy", "outline", "outlineLight", "textLink"])],
+    "HeroBlock": [text("eyebrow", "Eyebrow"), text("heading", "Heading"), area("intro", "Intro"), image("backgroundImage", "Background image"), text("photoLabel", "Label when there is no image"), blocks("buttons", "Buttons", ["ButtonLinkBlock"])],
+    "StatsBlock": [blocks("items", "Items", ["StatItemBlock"])],
+    "StatItemBlock": [text("value", "Value"), text("label", "Label")],
+    "FounderIntroBlock": [text("eyebrow", "Eyebrow"), area("quote", "Quote"), area("body", "Text"), image("portrait", "Portrait (empty: from Site Settings)"), text("linkLabel", "Link label"), url("link", "Link")],
+    "MarketsMapBlock": [text("eyebrow", "Eyebrow"), text("heading", "Heading"), text("linkLabel", "Link label"), url("link", "Link"), image("mapImage", "Map image"), text("mapLabel", "Label when there is no map")],
+    "FeaturedProjectsBlock": [text("eyebrow", "Eyebrow"), text("heading", "Heading"), field("projects", "Projects (empty: the first three)", "contentPickerMultiple"), text("linkLabel", "Link label"), url("link", "Link")],
+    "DisciplinesBlock": [text("eyebrow", "Eyebrow"), text("heading", "Heading"), blocks("items", "Disciplines", ["DisciplineItemBlock"])],
+    "DisciplineItemBlock": [text("heading", "Heading"), area("body", "Description"), dropdown("mediaStyle", "Display (photo: one image, beforeAfter: before/after)", ["photo", "beforeAfter"]), image("image", "Image"), text("imageLabel", "Label when there is no image"), image("beforeImage", "Before image"), image("afterImage", "After image")],
+    "CallToActionBlock": [text("heading", "Heading"), text("subtitle", "Subtitle ({founder} = founder name)"), blocks("buttons", "Buttons", ["ButtonLinkBlock"])],
+    "StoryBlock": [text("eyebrow", "Eyebrow"), text("heading", "Heading"), area("body", "Text (one paragraph per line)"), image("portrait", "Portrait (empty: from Site Settings)"), field("photos", "Site photos", "multiImage")],
+    "TimelineBlock": [text("eyebrow", "Eyebrow"), text("heading", "Heading"), blocks("items", "Milestones", ["TimelineItemBlock"])],
+    "TimelineItemBlock": [text("year", "Year"), text("text", "Text")],
+    "PrinciplesBlock": [text("eyebrow", "Eyebrow"), text("heading", "Heading"), blocks("items", "Principles", ["PrincipleItemBlock"])],
+    "PrincipleItemBlock": [text("heading", "Heading"), area("body", "Description")],
+    "PageIntroBlock": [text("eyebrow", "Eyebrow"), text("heading", "Heading"), area("lead", "Intro")],
+    "ReasonsBlock": [text("eyebrow", "Eyebrow"), text("heading", "Heading"), blocks("items", "Items", ["ReasonItemBlock"])],
+    "ReasonItemBlock": [text("value", "Value"), text("title", "Heading"), area("text", "Explanation"), text("source", "Source")],
+    "TextMediaBlock": [text("eyebrow", "Eyebrow"), text("heading", "Heading"), area("body", "Text (one paragraph per line)"), area("chips", "Tags (one per line)"), image("image", "Image"), text("imageLabel", "Label when there is no image"), dropdown("background", "Background", ["limestone", "white"])],
+    "MarketProjectsBlock": [text("heading", "Heading (empty: Projects in + market name)"), text("linkLabel", "Link label"), url("link", "Link")],
+    "ContactBlock": [text("eyebrow", "Eyebrow"), text("heading", "Heading"), text("formHeading", "Form heading"), area("topics", "Enquiry topics (one per line)"), area("privacyNote", "Privacy note"), area("successMessage", "Message after sending")],
+    "NewsletterBlock": [text("heading", "Newsletter heading"), text("placeholder", "Email field placeholder"), text("submitLabel", "Button label"), area("successMessage", "Message after signing up")],
+    "RichTextBlock": [field("body", "Content", "richtext")],
+    "ProjectUpdateBlock": [date("date", "Date"), text("title", "Heading"), area("text", "Text"), image("image", "Image")],
+    "NavigationLinkBlock": [text("label", "Label"), url("link", "Link")],
 }
 
 
 SEO_FIELDS = [
-    text("seoTitle", "כותרת SEO", "seo"),
-    area("seoDescription", "תיאור SEO", "seo"),
-    image("openGraphImage", "תמונת שיתוף", "seo"),
-    boolean("noIndex", "הסתרה ממנועי חיפוש", "seo"),
+    text("seoTitle", "SEO title", "seo"),
+    area("seoDescription", "SEO description", "seo"),
+    image("openGraphImage", "Social sharing image", "seo"),
+    boolean("noIndex", "Hide from search engines", "seo"),
 ]
 STANDARD_FIELDS = [
-    text("navigationLabel", "תווית ניווט", "settings"),
-    boolean("hideFromNavigation", "הסתרה מהתפריט", "settings"),
+    text("navigationLabel", "Navigation label", "settings"),
+    boolean("hideFromNavigation", "Hide from navigation", "settings"),
 ]
 
 PAGE_BLOCKS = {
@@ -141,44 +141,44 @@ PROJECT_TYPES = ["newConstruction", "renovation"]
 PROJECT_STATUSES = ["planning", "inProgress", "completed", "sold", "forSale"]
 
 DOCUMENTS = {
-    "SiteSettings": {"name": "הגדרות אתר", "root": True, "icon": "icon-settings", "fields": [
-        text("founderName", "שם המייסד"), text("founderRole", "תפקיד המייסד"), image("founderPortrait", "תמונת המייסד"),
-        text("contactEmail", "דוא״ל"), text("phone", "טלפון"), text("whatsAppNumber", "מספר WhatsApp (ספרות בלבד, עם קידומת מדינה)"), url("bookingUrl", "קישור לקביעת שיחה (Calendly)"),
-        text("companyName", "שם החברה", "company"), text("registeredIn", "מדינת רישום", "company"), area("mailingAddress", "כתובת למשלוח דואר", "company"),
-        text("footerTagline", "משפט בתחתית האתר", "company"), area("legalDisclaimer", "גילוי נאות", "company"),
+    "SiteSettings": {"name": "Site Settings", "root": True, "icon": "icon-settings", "fields": [
+        text("founderName", "Founder name"), text("founderRole", "Founder role"), image("founderPortrait", "Founder portrait"),
+        text("contactEmail", "Email"), text("phone", "Phone"), text("whatsAppNumber", "WhatsApp number (digits only, with country code)"), url("bookingUrl", "Booking link (Calendly)"),
+        text("companyName", "Company name", "company"), text("registeredIn", "Registered in", "company"), area("mailingAddress", "Mailing address", "company"),
+        text("footerTagline", "Footer tagline", "company"), area("legalDisclaimer", "Legal disclaimer", "company"),
         url("linkedInUrl", "LinkedIn", "company"), url("instagramUrl", "Instagram", "company"),
-        blocks("primaryNavigation", "ניווט ראשי (ריק: עמודי האתר)", ["NavigationLinkBlock"], "navigation"),
-        blocks("footerNavigation", "קישורי EXPLORE בתחתית (ריק: עמודי האתר)", ["NavigationLinkBlock"], "navigation"),
+        blocks("primaryNavigation", "Main navigation (empty: the site pages)", ["NavigationLinkBlock"], "navigation"),
+        blocks("footerNavigation", "Footer EXPLORE links (empty: the site pages)", ["NavigationLinkBlock"], "navigation"),
     ]},
-    "HomePage": {"name": "דף הבית", "root": True, "icon": "icon-home", "compositions": ["SeoComposition", "StandardPageComposition"]},
-    "AboutPage": {"name": "אודות", "icon": "icon-user", "compositions": ["SeoComposition", "StandardPageComposition"]},
-    "ProjectsPage": {"name": "פרויקטים", "icon": "icon-thumbnail-list", "compositions": ["SeoComposition", "StandardPageComposition"]},
-    "ProjectPage": {"name": "פרויקט", "icon": "icon-home", "compositions": ["SeoComposition"], "fields": [
-        dropdown("projectType", "סוג פרויקט", PROJECT_TYPES), dropdown("projectStatus", "סטטוס", PROJECT_STATUSES),
-        field("market", "שוק", "contentPicker"), text("locationLabel", "מיקום בכרטיס (למשל Atlanta, GA)"), text("neighborhood", "שכונה"),
-        area("summary", "תקציר (לכרטיס ול-SEO)"), field("body", "על הפרויקט", "richtext"),
-        image("heroImage", "תמונה ראשית"), text("heroImageAltText", "טקסט חלופי לתמונה הראשית"),
-        number("livingArea", "שטח מגורים (sq ft)", "details"), number("bedrooms", "חדרי שינה", "details"), decimal("bathrooms", "חדרי רחצה", "details"),
-        number("lotSize", "גודל מגרש (sq ft)", "details"), number("year", "שנה", "details"), date("startDate", "התחלה", "details"),
-        date("completionDate", "סיום", "details"), number("durationMonths", "משך בחודשים", "details"),
-        image("beforeImage", "לפני", "media"), image("afterImage", "אחרי", "media"), field("gallery", "גלריה", "multiImage", "media"),
-        image("areaMapImage", "מפת אזור (אזור כללי בלבד)", "media"),
-        blocks("updates", "עדכוני התקדמות", ["ProjectUpdateBlock"], "updates"),
-        boolean("showResults", "הצגת תוצאות", "updates"), text("resultValue", "תוצאה (למשל +24%)", "updates"), text("resultNote", "הסבר לתוצאה", "updates"),
+    "HomePage": {"name": "Home Page", "root": True, "icon": "icon-home", "compositions": ["SeoComposition", "StandardPageComposition"]},
+    "AboutPage": {"name": "About Page", "icon": "icon-user", "compositions": ["SeoComposition", "StandardPageComposition"]},
+    "ProjectsPage": {"name": "Projects Page", "icon": "icon-thumbnail-list", "compositions": ["SeoComposition", "StandardPageComposition"]},
+    "ProjectPage": {"name": "Project", "icon": "icon-home", "compositions": ["SeoComposition"], "fields": [
+        dropdown("projectType", "Project type", PROJECT_TYPES), dropdown("projectStatus", "Status", PROJECT_STATUSES),
+        field("market", "Market", "contentPicker"), text("locationLabel", "Location on the card (e.g. Atlanta, GA)"), text("neighborhood", "Neighborhood"),
+        area("summary", "Summary (card and SEO)"), field("body", "About the project", "richtext"),
+        image("heroImage", "Main image"), text("heroImageAltText", "Main image alt text"),
+        number("livingArea", "Living area (sq ft)", "details"), number("bedrooms", "Bedrooms", "details"), decimal("bathrooms", "Bathrooms", "details"),
+        number("lotSize", "Lot size (sq ft)", "details"), number("year", "Year", "details"), date("startDate", "Start date", "details"),
+        date("completionDate", "Completion date", "details"), number("durationMonths", "Duration (months)", "details"),
+        image("beforeImage", "Before", "media"), image("afterImage", "After", "media"), field("gallery", "Gallery", "multiImage", "media"),
+        image("areaMapImage", "Area map (general area only)", "media"),
+        blocks("updates", "Progress updates", ["ProjectUpdateBlock"], "updates"),
+        boolean("showResults", "Show results", "updates"), text("resultValue", "Result (e.g. +24%)", "updates"), text("resultNote", "Result note", "updates"),
     ]},
-    "MarketsPage": {"name": "שווקים", "icon": "icon-map", "compositions": ["SeoComposition", "StandardPageComposition"]},
-    "MarketPage": {"name": "שוק", "icon": "icon-map-location", "compositions": ["SeoComposition"], "fields": [
-        text("shortName", "שם קצר (למשל Atlanta, GA)"), area("intro", "משפט פתיחה"), image("heroImage", "תמונת פתיחה"), text("heroLabel", "תווית כשאין תמונה"),
-        number("mapLeft", "מיקום במפת הבית: אחוז משמאל"), number("mapTop", "מיקום במפת הבית: אחוז מלמעלה"),
+    "MarketsPage": {"name": "Markets Page", "icon": "icon-map", "compositions": ["SeoComposition", "StandardPageComposition"]},
+    "MarketPage": {"name": "Market", "icon": "icon-map-location", "compositions": ["SeoComposition"], "fields": [
+        text("shortName", "Short name (e.g. Atlanta, GA)"), area("intro", "Intro sentence"), image("heroImage", "Hero image"), text("heroLabel", "Label when there is no image"),
+        number("mapLeft", "Home map position: % from left"), number("mapTop", "Home map position: % from top"),
     ]},
-    "ContactPage": {"name": "צור קשר", "icon": "icon-message", "compositions": ["SeoComposition", "StandardPageComposition"]},
-    "TextPage": {"name": "עמוד טקסט", "icon": "icon-document", "compositions": ["SeoComposition", "StandardPageComposition"]},
+    "ContactPage": {"name": "Contact Page", "icon": "icon-message", "compositions": ["SeoComposition", "StandardPageComposition"]},
+    "TextPage": {"name": "Text Page", "icon": "icon-document", "compositions": ["SeoComposition", "StandardPageComposition"]},
 }
 
-DOCUMENTS["SeoComposition"] = {"name": "הגדרות SEO משותפות", "composition": True, "fields": SEO_FIELDS}
-DOCUMENTS["StandardPageComposition"] = {"name": "הגדרות עמוד משותפות", "composition": True, "fields": STANDARD_FIELDS}
+DOCUMENTS["SeoComposition"] = {"name": "SEO Settings", "composition": True, "fields": SEO_FIELDS}
+DOCUMENTS["StandardPageComposition"] = {"name": "Page Settings", "composition": True, "fields": STANDARD_FIELDS}
 for page_alias, allowed_blocks in PAGE_BLOCKS.items():
-    DOCUMENTS[page_alias]["fields"] = DOCUMENTS[page_alias].get("fields", []) + [blocks("contentBlocks", "אזורי תוכן", allowed_blocks)]
+    DOCUMENTS[page_alias]["fields"] = DOCUMENTS[page_alias].get("fields", []) + [blocks("contentBlocks", "Content blocks", allowed_blocks)]
 
 PARENTAGE = {
     "HomePage": ["AboutPage", "ProjectsPage", "MarketsPage", "ContactPage", "TextPage"],
@@ -298,7 +298,7 @@ def build_content_type(alias, spec, element=False):
         groups.setdefault(item["tab"], []).append(item)
 
     tabs = ET.SubElement(root, "Tabs")
-    tab_names = {"content": "תוכן", "details": "פרטים", "media": "תמונות", "updates": "עדכונים ותוצאות", "company": "חברה ותחתית", "navigation": "ניווט", "seo": "SEO", "settings": "הגדרות"}
+    tab_names = {"content": "Content", "details": "Details", "media": "Images", "updates": "Updates and results", "company": "Company and footer", "navigation": "Navigation", "seo": "SEO", "settings": "Settings"}
     for sort, tab_alias in enumerate(groups, start=1):
         tab = ET.SubElement(tabs, "Tab")
         ET.SubElement(tab, "Key").text = key_for(f"tab:{alias}:{tab_alias}")

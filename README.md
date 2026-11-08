@@ -33,7 +33,7 @@ tools/sync-local.sh run    # מעתיק לעותק המקומי ומפעיל א�
 
 ## שינוי מודל התוכן
 
-1. עורכים את `tools/generate_usync_content_model.py` (ואת `tools/block_labels.py` לבלוק חדש).
+1. עורכים את `tools/generate_usync_content_model.py` (ואת `tools/block_labels.py` לבלוק חדש). השמות והתוויות בממשק הניהול באנגלית.
 2. מריצים `python3 tools/generate_usync_content_model.py`.
 3. מוסיפים או מעדכנים את ה-partial ב-`Views/Partials/Blocks/{Alias}.cshtml`.
 4. מפעילים מחדש. אחר כך כדאי להריץ uSync Export בממשק הניהול.
