@@ -4,7 +4,7 @@ services:
   - type: web
     name: broudo-website
     runtime: docker
-    plan: starter            # a persistent disk needs a paid instance
+    plan: standard           # 2 GB: Umbraco runs out of memory on starter (512 MB)
     region: frankfurt        # closest Render region to Israel; cannot be changed later
     branch: main
     dockerfilePath: ./Dockerfile
